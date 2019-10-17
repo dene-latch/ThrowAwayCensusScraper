@@ -1,10 +1,9 @@
 import org.jsoup._
-// import $ivy.`org.jsoup:jsoup:1.12.1`, org.jsoup._ // ammonite
 import scala.jdk.CollectionConverters._
 import scala.collection.mutable.ListBuffer
 
 val url = "https://www2.census.gov/econ/bps/"
-val doc = Jsoup.connect("https://www2.census.gov/econ/bps/").get()
+val doc = Jsoup.connect(url).get()
 val links = doc.select("table>tbody>tr>td>*")
 var refs = new ListBuffer[String]()
 val droppers = List[String](
