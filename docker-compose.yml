@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  pg:
+    image: "postgres:12"
+    container_name: "pg-container"
+    ports:
+      - "54320:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+  scraper:
+    build:
+      dockerfile: scraper.Dockerfile
+      context: .
+    container_name: "scraper-container"
+#    volumes:
+#      - .:/var/lib/app
+
+volumes:
+  dbdata:

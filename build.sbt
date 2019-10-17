@@ -1,15 +1,24 @@
-name := "ThrowAwayCensusScraper"
+import Dependencies._
 
-version := "0.1"
+enablePlugins(JavaAppPackaging)
 
-scalaVersion := "2.13.1"
+ThisBuild / scalaVersion     := "2.13.1"
+ThisBuild / version          := "0.1.1"
+ThisBuild / organization     := "latch"
+ThisBuild / organizationName := "latch"
 
-val scalaJSVersion = sys.env.getOrElse("SCALAJS_VERSION", "0.6.20")
+lazy val root = (project in file("."))
+  .settings(
+    name := "ThrowAwayCensusScraper",
+    libraryDependencies ++= Seq(
+      "org.jsoup" % "jsoup" % "1.12.1",
+      scalaTest % Test
+    )
+  )
 
-organization := "com.github.latch"
-
-//sbtPlugin := true
-
-// https://mvnrepository.com/artifact/org.jsoup/jsoup
-libraryDependencies += "org.jsoup" % "jsoup" % "1.12.1"
+ThisBuild / resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
+ThisBuild / resolvers += "CDP S3 Respository" at "s3://cdp-repo"
+ThisBuild / publishMavenStyle := true
+ThisBuild / publishTo := Some("CDP Releases" at "s3://cdp-repo")
+ThisBuild / javaOptions += "-Dscala.concurrent.context.maxThreads=20"
 
