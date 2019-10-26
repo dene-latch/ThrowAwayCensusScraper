@@ -1,0 +1,16 @@
+#census api type
+name: reconst
+  column_list
+    - cell_value
+    - data_type_code
+    - time_slot_id
+    - category_code
+    - seasonally_adj
+  filter_list
+    - "time=from+1900"
+  pk_cols
+    - category_code
+    - data_type_code
+    - time_slot_id
+
+reconst: name
