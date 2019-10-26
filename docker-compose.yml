@@ -1,13 +1,18 @@
 version: "3"
 services:
 
-  pg:
-    image: "postgres:12"
-    container_name: "pg-container"
+  db:
+    image: "postgres"
+    container_name: "my_postgres"
+    environment:
+      - POSTGRES_USER=john
+      - POSTGRES_PASSWORD=pwd0123456789
+      - POSTGRES_DB=mydb
     ports:
+      - "5432:5432"
       - "54320:5432"
     volumes:
-      - dbdata:/var/lib/postgresql/data
+      - ./dbdata:/var/lib/postgresql/data
 
   scraper:
     build:
