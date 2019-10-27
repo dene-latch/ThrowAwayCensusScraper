@@ -31,6 +31,8 @@ class ExampleFileTests extends AnyFreeSpec {
         assert(parsedJson == parsedStreamString.head)
         assert(parsedJson == parsedYamlReader)
         assert(parsedJson == parsedStreamReader.head)
+
+        println(parsedJson)
       }
     }
   }
