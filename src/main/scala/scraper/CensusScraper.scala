@@ -20,7 +20,7 @@ object CensusScraper {
     try {
       fn
     } catch {
-      case e =>
+      case e: Throwable =>
         if (n > 1) {
           println(s"try $n failed.")
           Thread.sleep((n-1)*1000)

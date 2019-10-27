@@ -22,7 +22,7 @@ object PGManager {
       statement.executeQuery("INSERT INTO test (num, data) VALUES (%s, %s), (100, 'abcdef')" )
       val queryResult = statement.executeQuery("SELECT * FROM test;")
     } catch {
-      case e => e.printStackTrace
+      case e: Throwable => e.printStackTrace
     }
     connection.close()
   }
