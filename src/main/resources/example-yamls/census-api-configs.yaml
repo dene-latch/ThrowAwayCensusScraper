@@ -1,0 +1,23 @@
+version: "3"
+apis:
+
+  reconst:
+    column_list:
+      - cell_value
+      - data_type_code
+      - time_slot_id
+      - category_code
+      - seasonally_adj
+    filter_list:
+      - "time=from+1900"
+    pk_cols:
+      - category_code
+      - data_type_code
+      - time_slot_id
+    url: "https://api.census.gov/data/timeseries/eits/resconst"
+
+example-section:
+   cookieMonser: 1073741824
+   bigBird: 4194176
+   ocar: "grouch"
+   count: "dracula"
