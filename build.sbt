@@ -28,6 +28,7 @@ lazy val root = (project in file("."))
       "io.spray" % "spray-json_2.12" % "1.3.5",
       "io.circe" %% "circe-yaml" % "0.11.0-M1",
       "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.9.9",
+      "org.specs2" %% "specs2-core" % "4.6.0" % "test",
       "org.scalikejdbc" %% "scalikejdbc" % scalikeJDBCVersion,
       "io.kontainers" %% "purecsv" % pureCSVVersion,
       "ch.qos.logback"  %  "logback-classic" % logbackVersion,
