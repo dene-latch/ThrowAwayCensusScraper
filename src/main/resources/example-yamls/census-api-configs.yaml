@@ -4,10 +4,10 @@ data_sources:
   # --- REQUIRED ---
 
   apis:
-    - reconst
+    - resconst
 
 
-reconst:
+resconst:
   column_list:
     - cell_value
     - data_type_code

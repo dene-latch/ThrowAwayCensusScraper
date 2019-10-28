@@ -136,7 +136,7 @@ object YamlPlayground {
 
 
 object YamlPlayTalker extends App {
-  val yaml_path:String = getClass.getClassLoader.getResource("example-yamls/whatever.yaml").getPath
+  val yaml_path:String = getClass.getClassLoader.getResource("example-yamls/census-api-configs.yaml").getPath
   YamlPlayground.YamlPlaySnake(yaml_path)
   YamlPlayground.YamlPlayJackson(yaml_path)
 //  YamlPlayground.YamlPlayConfigLoader(yaml_path)
