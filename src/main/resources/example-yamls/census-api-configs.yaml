@@ -1,23 +1,39 @@
-version: "3"
-apis:
+data_sources:
 
-  reconst:
-    column_list:
-      - cell_value
-      - data_type_code
-      - time_slot_id
-      - category_code
-      - seasonally_adj
-    filter_list:
-      - "time=from+1900"
-    pk_cols:
-      - category_code
-      - data_type_code
-      - time_slot_id
-    url: "https://api.census.gov/data/timeseries/eits/resconst"
+  # ----------------
+  # --- REQUIRED ---
+
+  apis:
+    - reconst
+
+
+reconst:
+  column_list:
+    - cell_value
+    - data_type_code
+    - time_slot_id
+    - category_code
+    - seasonally_adj
+  filter_list:
+    - "time=from+1900"
+  pk_cols:
+    - category_code
+    - data_type_code
+    - time_slot_id
+  url: "https://api.census.gov/data/timeseries/eits/resconst"
+  customConfig: reconstCustomConfig
+
+
+reconstCustomConfig:
+  someKey: someValue
+  anotherKey: anotherValue
 
 example-section:
-   cookieMonser: 1073741824
-   bigBird: 4194176
-   ocar: "grouch"
-   count: "dracula"
+
+  # ----------------
+  # --- OPTIONAL ---
+
+  cookieMonster: 1073741824
+  bigBird: 4194176
+  oscar: "grouch"
+  count: "dracula"

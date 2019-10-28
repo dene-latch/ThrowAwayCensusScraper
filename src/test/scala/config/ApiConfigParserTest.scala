@@ -9,33 +9,36 @@ class ApiConfigParserTest extends Specification {
       val apiConfig = config.parse("""
 ############################ API Consumer CONFIGURATION ############################
 
-version: "3"
-apis:
+data_sources:
 
   # ----------------
   # --- REQUIRED ---
 
-  namespace: reconst
+  apis:
+    - reconst
 
-  api-id: my_test-namespace
 
+reconst:
   column_list:
     - cell_value
     - data_type_code
     - time_slot_id
     - category_code
     - seasonally_adj
-
   filter_list:
     - "time=from+1900"
-
   pk_cols:
     - category_code
     - data_type_code
     - time_slot_id
   url: https://api.census.gov/data/timeseries/eits/resconst
+  customConfig: reconstCustomConfig
 
-  example-section:
+reconstCustomConfig:
+  someKey: someValue
+  anotherKey: anotherValue
+
+example-section:
 
   # ----------------
   # --- OPTIONAL ---
@@ -46,8 +49,9 @@ apis:
    count: "dracula"
                                       """)
 
-      apiConfig.namespace must_== "my_test-namespace"
       val myApiConfig = apiConfig.apiConfigs.head
+      println(myApiConfig)
+
       myApiConfig.columns must_== Set(
         "cell_value",
         "data_type_code",
@@ -66,10 +70,15 @@ apis:
         "category_code"
       )
 
+      myApiConfig.url must_== "https://api.census.gov/data/timeseries/eits/resconst"
+
+      myApiConfig.customConfig must havePairs("someKey" -> "someValue", "anotherKey" -> "anotherValue")
+      myApiConfig.customConfig.size must_== 2
+
       apiConfig.sesameConfig.cookieMonster must_== 1073741824
       apiConfig.sesameConfig.bigBird must_== 4194176
       apiConfig.sesameConfig.oscar must_== "grouch"
-      apiConfig.sesameConfig.cookieMonster must_== "dracula"
+      apiConfig.sesameConfig.count must_== "dracula"
 
     }
   }

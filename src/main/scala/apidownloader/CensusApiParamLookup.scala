@@ -17,7 +17,7 @@ object CensusApiParamLookup {
             )
           ),
           ("filter_list",
-            List("time=from+1900")
+            List("time=from+2019")
           ),
           ("pk_cols",
             List(

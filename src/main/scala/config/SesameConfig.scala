@@ -1,11 +1,14 @@
 package config
 
+// SesameConfig (this file) and related code exist purely for demonstrative purposes
+// remove this file from the codebase when hardening up for production
+
 import config.SesameConfig._
 
 case class SesameConfig(private val idRaw: String,
                         cookieMonster: Integer = DefaultCookieMonster,
                         bigBird: Integer = DefaultBigBird,
-                        oscar: String = DefaultOcsar,
+                        oscar: String = DefaultOscar,
                         count: String = DefaultCount
                     ) {
   val id = idRaw.trim()
@@ -16,6 +19,6 @@ object SesameConfig {
   val DefaultWhateverValue = 1
   val DefaultCookieMonster = 10
   val DefaultBigBird = 100
-  val DefaultOcsar = "GarbageMan"
+  val DefaultOscar = "GarbageMan"
   val DefaultCount = "Chocolate"
 }

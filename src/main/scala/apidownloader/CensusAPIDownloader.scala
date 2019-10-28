@@ -25,7 +25,7 @@ object CensusAPIDownloader {
       val content:Iterator[Map[String, String]] = {
         census_api_handler( pk_cols=api_params(census_api_name)("pk_cols"))(url)
       }
-      content.foreach(println(_))
+      println(s"content.size: ${content.size}")
       content
     } catch {
       case e: Throwable => e.printStackTrace

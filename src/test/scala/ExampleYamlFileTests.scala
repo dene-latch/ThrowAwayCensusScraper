@@ -4,7 +4,7 @@ import org.scalatest.freespec.AnyFreeSpec
 import scala.io.Source
 import io.circe.yaml.parser
 
-class ExampleFileTests extends AnyFreeSpec {
+class ExampleYamlFileTests extends AnyFreeSpec {
 
   "yaml test files" - {
 

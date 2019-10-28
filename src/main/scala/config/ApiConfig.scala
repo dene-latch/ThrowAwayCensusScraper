@@ -1,17 +1,14 @@
 package config
 
-import config.ApiConfig._
-
 case class ApiConfig(private val idRaw: String,
-                     name: String,
                      columns: Set[String],
                      filters: Set[String],
                      pk_cols: Set[String],
-                     url: String
+                     url: String,
+                     customConfig: Map[_ <: Any, Any]
                     ) {
-  val id = idRaw.trim()
+  val id:String = idRaw.trim()
   require(id.nonEmpty, "Committer id must have at least one character")
-  require(name.nonEmpty, "api name must have at least one character")
   require(columns.nonEmpty, "Must have at least one column")
 }
 
