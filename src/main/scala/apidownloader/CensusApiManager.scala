@@ -3,7 +3,7 @@ package apidownloader
 import CensusApiParamLookup._
 import com.github.tototoshi.csv.CSVReader
 
-object CensusAPIDownloader {
+object CensusApiManager {
   type m_type = Map[String, String]
   type it_type = Iterator[Map[String, String]]
   def source(url: String): String = scala.io.Source.fromURL(url).mkString
@@ -13,7 +13,7 @@ object CensusAPIDownloader {
   def pipe(url: String, enricher: m_type=>m_type): it_type =   (sink _ compose (clean _ compose source _ ))(url).map( enricher )
   def census_api_handler(pk_cols:List[String]): String => it_type = pipe( _ : String, enrich( pk_cols, _ ))
 
-  def DownloadFromApi(url: String, census_api_name: String): Any = {
+  def DownloadFromApi(url: String, census_api_name: String): it_type = {
     try {
       val content:Iterator[Map[String, String]] = {
         census_api_handler( pk_cols=api_params(census_api_name)("pk_cols"))(url)

@@ -1,12 +1,8 @@
 package apidownloader
 
-import java.io.{File, InputStreamReader}
-
 import apidownloader.CensusApiParamLookup.{api_params, base_urls}
-import io.circe.yaml.parser
 import org.scalatest.freespec.AnyFreeSpec
 
-import scala.io.Source
 
 class ApiDownloadTests extends AnyFreeSpec {
 
@@ -18,7 +14,7 @@ class ApiDownloadTests extends AnyFreeSpec {
         ("filter", api_params(census_api_name)("filter_list").mkString("&"))
       ).toMap
 
-      val url = CensusAPIDownloader.ConstructCensusUrl(base_url, request_args)
-      CensusAPIDownloader.DownloadFromApi(url, census_api_name=census_api_name)
+      val url = CensusApiManager.ConstructCensusUrl(base_url, request_args)
+      CensusApiManager.DownloadFromApi(url, census_api_name=census_api_name)
     }
 }
