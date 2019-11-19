@@ -23,6 +23,8 @@ lazy val root = (project in file("."))
   .settings(
     name := "ThrowAwayCensusScraper",
     libraryDependencies ++= Seq(
+      "com.typesafe.play" %% "play-json" % "2.7.4",
+      "au.com.bytecode" % "opencsv" % "2.4",
       "org.yaml" % "snakeyaml" % "1.11",
       "org.jsoup" % "jsoup" % "1.12.1",
       "io.spray" % "spray-json_2.12" % "1.3.5",

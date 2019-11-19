@@ -1,6 +1,6 @@
 package apidownloader
 
-object CensusApiParamLookup {
+object CensusEITSApiParamLookup {
 
   val api_params: Map[String, Map[String, List[String]]] =
     List(
@@ -50,6 +50,35 @@ object CensusApiParamLookup {
       )
     ).toMap
 
+
+  val sf1_api_params: Map[String, Map[String, List[String]]] =
+    List(
+      (
+        "reconst",
+        List(
+          ("column_list",
+            List(
+              "cell_value",
+              "data_type_code",
+              "time_slot_id",
+              "category_code",
+              "seasonally_adj"
+            )
+          ),
+          ("filter_list",
+            List("time=from+2019")
+          ),
+          ("pk_cols",
+            List(
+              "category_code",
+              "data_type_code",
+              "time_slot_id"
+            )
+          )
+        ).toMap
+      )
+    ).toMap
+
 }
 
 
@@ -62,3 +91,4 @@ object CensusApiParamLookup {
 //  val filters: List[String] = List(
 //    "for=county:*&in=state:*"
 //  )
+

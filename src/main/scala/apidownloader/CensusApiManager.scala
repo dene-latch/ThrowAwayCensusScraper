@@ -1,6 +1,6 @@
 package apidownloader
 
-import CensusApiParamLookup._
+import CensusEITSApiParamLookup._
 import com.github.tototoshi.csv.CSVReader
 
 object CensusApiManager {
@@ -21,7 +21,7 @@ object CensusApiManager {
       println(s"content.size: ${content.size}")
       content
     } catch {
-      case e: Throwable => e.printStackTrace
+      case e: Throwable => throw e
     }
   }
 

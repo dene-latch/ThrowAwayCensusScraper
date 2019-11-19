@@ -1,5 +1,6 @@
-import java.sql.DriverManager
-import java.sql.Connection
+package db
+
+import java.sql.{Connection, DriverManager}
 
 object PGManager {
 
